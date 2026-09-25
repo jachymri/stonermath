@@ -170,7 +170,7 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 .smoke-overlay i:nth-child(4) { inset-inline-end: 2%; width: 330px; height: 330px; animation-delay: -6.2s; animation-duration: 10s; }
 .smoke-overlay i:nth-child(5) { inset-inline-end: -90px; animation-delay: -2.1s; }
 .smoke-overlay i:nth-child(6) { inset-inline-start: 28%; width: 440px; height: 300px; animation-delay: -7.5s; animation-duration: 11s; }
-.smoke-gif { position: absolute; z-index: 1; inset: -8%; width: 116%; height: 116%; pointer-events: none; opacity: .94; mix-blend-mode: screen; }
+.smoke-gif { position: absolute; z-index: 1; inset: -8%; width: 116%; height: 116%; object-fit: cover; pointer-events: none; opacity: .9; mix-blend-mode: screen; filter: contrast(1.18) brightness(1.08); }
 .reward-offer .hype-flame { background: rgba(5,12,9,.48); box-shadow: 0 0 0 1px rgba(255,255,255,.1),0 0 70px rgba(121,255,197,.3); }
 @keyframes giant-smoke { 0% { transform: translate3d(0,90px,0) scale(.55) rotate(0); opacity: 0; } 16% { opacity: .7; } 68% { opacity: .42; } 100% { transform: translate3d(50px,-680px,0) scale(1.65) rotate(38deg); opacity: 0; } }
 @keyframes flame-bounce { 50% { transform: translateY(-9px) scale(1.06) rotate(-4deg); } }
