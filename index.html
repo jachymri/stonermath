@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>StonerMath — Complex Function Plotter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="StonerMath home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 38 30" role="img">
+            <path class="smoke" d="M27 8c4-1 5-4 2-6m5 7c3-2 3-5 1-7" />
+            <path class="paper" d="M5 22 27 10l4 6L9 27Z" />
+            <path class="filter" d="m5 22 4 5 5-3-4-5Z" />
+            <path class="ember" d="m27 10 3-2 4 6-3 2Z" />
+          </svg>
+        </span>
+        <span>STONERMATH</span>
+      </a>
+
+      <form id="function-form" class="function-bar" autocomplete="off">
+        <label for="expression">f(z)</label>
+        <div class="input-wrap">
+          <input id="expression" value="z^3 - 1" spellcheck="false" aria-label="Complex function" />
+          <span id="valid-indicator" class="valid-indicator" title="Valid expression">✓</span>
+        </div>
+        <button type="submit" class="plot-button">Plot <span>↵</span></button>
+      </form>
+
+      <button id="panel-toggle" class="icon-button panel-toggle" aria-label="Toggle controls" aria-expanded="true">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <section class="workspace">
+      <div id="plot-wrap" class="plot-wrap">
+        <canvas id="plot" aria-label="Complex function visualization"></canvas>
+        <div class="plot-vignette"></div>
+
+        <div class="plot-meta top-left">
+          <span>DOMAIN</span>
+          <strong>ℂ → ℂ</strong>
+        </div>
+
+        <div class="legend" aria-label="Color legend">
+          <div class="phase-wheel"><span></span></div>
+          <div class="legend-copy">
+            <div><span>PHASE</span><b>ARG f(z)</b></div>
+            <div><span>LIGHT</span><b>|f(z)|</b></div>
+          </div>
+        </div>
+
+        <div id="coordinates" class="coordinates">
+          <span>RE <b id="coord-re">0.000</b></span>
+          <i></i>
+          <span>IM <b id="coord-im">0.000</b></span>
+          <i></i>
+          <span>|f| <b id="coord-mag">—</b></span>
+        </div>
+
+        <div class="nav-help"><span>SCROLL</span> ZOOM <i></i> <span>DRAG</span> PAN</div>
+        <div id="error-toast" class="error-toast" role="alert"></div>
+      </div>
+
+      <aside id="control-panel" class="control-panel">
+        <div class="panel-section first">
+          <div class="section-heading">
+            <h2>View</h2>
+            <button id="reset-view" class="text-button">Reset</button>
+          </div>
+          <div class="stat-grid">
+            <label>Center <output id="center-output">0 + 0i</output></label>
+            <label>Scale <output id="scale-output">4.00</output></label>
+          </div>
+          <div class="zoom-row">
+            <button id="zoom-out" aria-label="Zoom out">−</button>
+            <div class="zoom-track"><span id="zoom-level"></span></div>
+            <button id="zoom-in" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-heading"><h2>Rendering</h2><span class="live-dot">LIVE</span></div>
+          <label class="control-label" for="brightness">Amplitude contrast <output id="brightness-output">1.00</output></label>
+          <input id="brightness" type="range" min="0.3" max="2.2" value="1" step="0.01" />
+          <label class="control-label" for="chroma">Phase chroma <output id="chroma-output">0.18</output></label>
+          <input id="chroma" type="range" min="0" max="0.3" value="0.18" step="0.005" />
+          <div class="switch-row">
+            <span><b>Modulus contours</b><small>Logarithmic magnitude bands</small></span>
+            <label class="switch"><input id="contours" type="checkbox"><i></i></label>
+          </div>
+          <div class="switch-row">
+            <span><b>Domain grid</b><small>Adaptive coordinate grid</small></span>
+            <label class="switch"><input id="grid" type="checkbox" checked><i></i></label>
+          </div>
+        </div>
+
+        <div class="panel-section presets-section">
+          <div class="section-heading"><h2>Functions</h2><span class="shortcut">1—6</span></div>
+          <div id="presets" class="presets">
+            <button class="active" data-expression="z^3 - 1"><span>Cubic roots</span><code>z³ − 1</code></button>
+            <button data-expression="sin(z)"><span>Complex sine</span><code>sin z</code></button>
+            <button data-expression="exp(1/z)"><span>Essential</span><code>e¹⁄ᶻ</code></button>
+            <button data-expression="(z^2 - 1)/(z^2 + 1)"><span>Rational</span><code>(z²−1)/(z²+1)</code></button>
+            <button data-expression="log(z)"><span>Logarithm</span><code>log z</code></button>
+            <button data-expression="z^z"><span>Self power</span><code>zᶻ</code></button>
+            <button id="reward-function" class="reward-function" data-expression="exp(sin(1/z))/(z^3 - 1)" hidden><span>Unlocked: Event horizon</span><code>eˢⁱⁿ⁽¹⁄ᶻ⁾/(z³−1)</code></button>
+          </div>
+        </div>
+
+        <footer>
+          <span>WEBGL 2</span>
+          <span>OKLAB COLOR</span>
+          <span id="fps">60 FPS</span>
+        </footer>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="reward-dialog" class="reward-dialog" aria-labelledby="reward-title" aria-describedby="reward-description">
+    <div id="reward-offer" class="reward-offer">
+      <div class="reward-orbit" aria-hidden="true"><i></i><i></i><span>z</span></div>
+      <span class="eyebrow">OPTIONAL DISCOVERY</span>
+      <h2 id="reward-title">Want to see a really<br>cool function?</h2>
+      <p id="reward-description">Watch one short ad to unlock a hidden complex function. No ad plays unless you choose yes.</p>
+      <div class="reward-actions">
+        <button id="accept-reward" class="reward-primary">Yes, show me <span>→</span></button>
+        <button id="decline-reward" class="reward-secondary">No thanks</button>
+      </div>
+      <small>One optional ad · shown once per session</small>
+    </div>
+    <div id="ad-stage" class="ad-stage" hidden>
+      <div id="ad-slot" class="ad-slot">
+        <span>ADVERTISEMENT</span>
+        <div class="ad-placeholder">
+          <b>Rewarded ad placement</b>
+          <p>Connect your ad provider in <code>ad-config.js</code></p>
+        </div>
+      </div>
+      <p id="ad-status" aria-live="polite">Preparing ad…</p>
+    </div>
+  </dialog>
+  <script src="ad-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
