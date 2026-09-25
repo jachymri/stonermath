@@ -153,7 +153,7 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 .reward-offer::after { opacity: .12; background-size: 52px 52px; }
 .hype-flame { position: relative; z-index: 2; display: grid; place-items: center; width: 96px; height: 96px; margin-bottom: 24px; border-radius: 50%; background: rgba(0,0,0,.36); font-size: 52px; box-shadow: 0 0 0 1px rgba(255,255,255,.08),0 0 60px rgba(255,117,34,.28); animation: flame-bounce 1.7s ease-in-out infinite; }
 .reward-offer .eyebrow { position: relative; z-index: 2; display: block; color: var(--accent); font: 700 14px var(--sans); letter-spacing: .13em; }
-.reward-offer h2 { position: relative; z-index: 2; max-width: 660px; margin: 17px 0 18px; font-size: clamp(52px,6vw,76px); line-height: .94; letter-spacing: -.065em; }
+.reward-offer h2 { position: relative; z-index: 2; max-width: 660px; margin: 0 0 22px; font-size: clamp(52px,6vw,76px); line-height: .94; letter-spacing: -.065em; }
 .reward-offer h2 em { display: inline-block; color: var(--accent); }
 .reward-offer p { position: relative; z-index: 2; max-width: none; color: #f0f2f3; font-size: 21px; font-weight: 500; }
 .reward-offer .reward-actions { position: relative; z-index: 2; max-width: 610px; grid-template-columns: 1.7fr .62fr; gap: 14px; margin-top: 34px; }
