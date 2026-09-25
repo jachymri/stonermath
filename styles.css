@@ -163,14 +163,16 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 .reward-offer .reward-secondary { background: rgba(28,31,35,.84); color: #f0f2f3; border-color: rgba(255,255,255,.18); }
 .reward-offer small { position: relative; z-index: 2; margin-top: 21px; color: #abb1b6; font: 12px var(--sans); letter-spacing: 0; }
 .smoke-overlay { position: absolute; z-index: 1; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
-.smoke-overlay i { position: absolute; inset-block-end: -180px; width: 270px; height: 270px; border-radius: 48% 52% 44% 56%; opacity: 0; background: radial-gradient(circle at 42% 45%,rgba(220,255,230,.42),rgba(128,196,158,.17) 38%,transparent 68%); filter: blur(18px); animation: giant-smoke 7s ease-out infinite; }
+.smoke-overlay i { position: absolute; inset-block-end: -180px; width: 270px; height: 270px; border-radius: 48% 52% 44% 56%; opacity: 0; background: radial-gradient(circle at 42% 45%,rgba(242,255,246,.82),rgba(158,220,181,.34) 38%,transparent 70%); filter: blur(11px); animation: giant-smoke 7s ease-out infinite; }
 .smoke-overlay i:nth-child(1) { inset-inline-start: -40px; animation-delay: -1s; }
 .smoke-overlay i:nth-child(2) { inset-inline-start: 13%; width: 360px; height: 360px; animation-delay: -5s; animation-duration: 9s; }
 .smoke-overlay i:nth-child(3) { inset-inline-start: 38%; animation-delay: -3.4s; animation-duration: 8s; }
 .smoke-overlay i:nth-child(4) { inset-inline-end: 2%; width: 330px; height: 330px; animation-delay: -6.2s; animation-duration: 10s; }
 .smoke-overlay i:nth-child(5) { inset-inline-end: -90px; animation-delay: -2.1s; }
 .smoke-overlay i:nth-child(6) { inset-inline-start: 28%; width: 440px; height: 300px; animation-delay: -7.5s; animation-duration: 11s; }
-@keyframes giant-smoke { 0% { transform: translate3d(0,90px,0) scale(.55) rotate(0); opacity: 0; } 18% { opacity: .38; } 60% { opacity: .22; } 100% { transform: translate3d(50px,-680px,0) scale(1.65) rotate(38deg); opacity: 0; } }
+.smoke-gif { position: absolute; z-index: 1; inset: -8%; width: 116%; height: 116%; pointer-events: none; opacity: .94; mix-blend-mode: screen; }
+.reward-offer .hype-flame { background: rgba(5,12,9,.48); box-shadow: 0 0 0 1px rgba(255,255,255,.1),0 0 70px rgba(121,255,197,.3); }
+@keyframes giant-smoke { 0% { transform: translate3d(0,90px,0) scale(.55) rotate(0); opacity: 0; } 16% { opacity: .7; } 68% { opacity: .42; } 100% { transform: translate3d(50px,-680px,0) scale(1.65) rotate(38deg); opacity: 0; } }
 @keyframes flame-bounce { 50% { transform: translateY(-9px) scale(1.06) rotate(-4deg); } }
 .ad-stage { padding: 24px; text-align: center; }
 .ad-slot { min-height: 250px; padding: 12px; border: 1px solid var(--line); background: #090b0d; display: flex; flex-direction: column; }
@@ -192,6 +194,7 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 
 @media (prefers-reduced-motion: reduce) {
   .reward-dialog::backdrop,.reward-offer::before,.reward-orbit,.reward-orbit::before,.reward-orbit i,.reward-orbit b,.smoke,.eyebrow i,.reward-visual > code,.reward-primary,.reward-primary::after,.smoke-overlay i,.hype-flame { animation: none !important; }
+  .smoke-gif { display: none; }
 }
 
 @media (max-height: 650px) and (min-width: 781px) {
