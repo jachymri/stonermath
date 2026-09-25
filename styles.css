@@ -170,10 +170,11 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 .smoke-overlay i:nth-child(4) { inset-inline-end: 2%; width: 330px; height: 330px; animation-delay: -6.2s; animation-duration: 10s; }
 .smoke-overlay i:nth-child(5) { inset-inline-end: -90px; animation-delay: -2.1s; }
 .smoke-overlay i:nth-child(6) { inset-inline-start: 28%; width: 440px; height: 300px; animation-delay: -7.5s; animation-duration: 11s; }
-.smoke-gif { position: absolute; z-index: 1; inset: -8%; width: 116%; height: 116%; object-fit: cover; pointer-events: none; opacity: .9; mix-blend-mode: screen; filter: contrast(1.18) brightness(1.08); }
+.smoke-gif { position: absolute; z-index: 1; inset: -3%; width: 106%; height: 106%; object-fit: cover; pointer-events: none; opacity: .78; mix-blend-mode: normal; filter: contrast(1.65) brightness(1.35) saturate(.2); animation: gif-jank 1.7s steps(2,end) infinite alternate; }
 .reward-offer .hype-flame { background: rgba(5,12,9,.48); box-shadow: 0 0 0 1px rgba(255,255,255,.1),0 0 70px rgba(121,255,197,.3); }
 @keyframes giant-smoke { 0% { transform: translate3d(0,90px,0) scale(.55) rotate(0); opacity: 0; } 16% { opacity: .7; } 68% { opacity: .42; } 100% { transform: translate3d(50px,-680px,0) scale(1.65) rotate(38deg); opacity: 0; } }
 @keyframes flame-bounce { 50% { transform: translateY(-9px) scale(1.06) rotate(-4deg); } }
+@keyframes gif-jank { 0% { transform: translate(-9px,6px) scale(1.02); } 55% { transform: translate(7px,-4px) scale(1.07); } 100% { transform: translate(-3px,-10px) scale(1.04); } }
 .ad-stage { padding: 24px; text-align: center; }
 .ad-slot { min-height: 250px; padding: 12px; border: 1px solid var(--line); background: #090b0d; display: flex; flex-direction: column; }
 .ad-slot > span { color: #70787f; font: 8px var(--mono); letter-spacing: .14em; }
@@ -194,7 +195,7 @@ footer span + span::before { content: "•"; margin-right: 12px; color: #34393e;
 
 @media (prefers-reduced-motion: reduce) {
   .reward-dialog::backdrop,.reward-offer::before,.reward-orbit,.reward-orbit::before,.reward-orbit i,.reward-orbit b,.smoke,.eyebrow i,.reward-visual > code,.reward-primary,.reward-primary::after,.smoke-overlay i,.hype-flame { animation: none !important; }
-  .smoke-gif { display: none; }
+  .smoke-gif { animation: none !important; }
 }
 
 @media (max-height: 650px) and (min-width: 781px) {
