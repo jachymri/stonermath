@@ -126,21 +126,18 @@
 
   <dialog id="reward-dialog" class="reward-dialog" aria-labelledby="reward-title" aria-describedby="reward-description">
     <div id="reward-offer" class="reward-offer">
-      <div class="reward-visual" aria-hidden="true">
-        <div class="smoke smoke-one"></div>
-        <div class="smoke smoke-two"></div>
-        <div class="smoke smoke-three"></div>
-        <div class="reward-orbit"><i></i><i></i><b></b><span>?</span></div>
-        <code>f(z) = ???</code>
+      <div class="smoke-overlay" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
-      <span class="eyebrow"><i></i> SECRET PLOT DETECTED</span>
-      <h2 id="reward-title">This function looks<br><em>absolutely wild.</em></h2>
-      <p id="reward-description">Watch one short ad to unlock it.</p>
+      <div class="hype-flame" aria-hidden="true">🔥</div>
+      <span class="eyebrow">YOU FOUND THE GOOD STUFF</span>
+      <h2 id="reward-title">Wanna see<br><em>something insane?</em></h2>
+      <p id="reward-description">Watch one quick ad. Then it’s yours.</p>
       <div class="reward-actions">
-        <button id="accept-reward" class="reward-primary"><span>Unlock the plot</span><b>→</b></button>
-        <button id="decline-reward" class="reward-secondary">Skip</button>
+        <button id="accept-reward" class="reward-primary"><span>Yes, let’s go</span><b>→</b></button>
+        <button id="decline-reward" class="reward-secondary">Nah</button>
       </div>
-      <small>OPTIONAL · NO AD PLAYS IF YOU SKIP</small>
+      <small>One optional ad · “Nah” skips everything</small>
     </div>
     <div id="ad-stage" class="ad-stage" hidden>
       <div id="ad-slot" class="ad-slot">
