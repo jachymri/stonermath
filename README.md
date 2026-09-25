@@ -2,6 +2,8 @@
 
 A fast, dependency-free complex function plotter using WebGL 2 domain coloring.
 
+**Live:** [jachymri.github.io/stonermath](https://jachymri.github.io/stonermath/)
+
 - **Phase** is represented by OKLab hue/chroma.
 - **Amplitude** (`|f(z)|`) controls OKLab lightness.
 - Scroll to zoom, drag to pan, and double-click to zoom in.
